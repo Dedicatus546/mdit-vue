@@ -1,7 +1,8 @@
-import { slugify } from '@mdit-vue/shared';
-import type { MarkdownItEnv, MarkdownItHeader } from '@mdit-vue/types';
-import MarkdownIt from 'markdown-it';
-import anchorPlugin from 'markdown-it-anchor';
+import { slugify } from '@mdit-vue-for-enhancer/shared';
+import type { MarkdownItHeader } from '@mdit-vue-for-enhancer/types';
+import { anchor } from 'markdown-it-anchor-for-enhancer';
+import type { MarkdownItEnv } from 'markdown-it-enhancer';
+import { MarkdownIt } from 'markdown-it-enhancer';
 import { describe, expect, it } from 'vitest';
 import { headersPlugin } from '../src/index.js';
 
@@ -39,52 +40,57 @@ const fixtures = {
 `,
 };
 
-describe('should extract headers with default option (h2, h3)', () => {
-  const md = MarkdownIt().use(headersPlugin);
+describe('should extract headers with default option (h2, h3)', async () => {
+  const md = new MarkdownIt().use(headersPlugin);
+  await md.isReady();
 
   Object.entries(fixtures).forEach(([name, source]) => {
-    it(name, () => {
+    it(name, async () => {
       const env: MarkdownItEnv = {};
-      md.render(source, env);
+      await md.render(source, env);
       expect(env.headers).toMatchSnapshot();
     });
   });
 });
 
-describe('should extract nothing', () => {
-  const md = MarkdownIt().use(headersPlugin, {
+describe('should extract nothing', async () => {
+  const md = new MarkdownIt().use(headersPlugin, {
     level: [],
   });
+  await md.isReady();
 
   Object.entries(fixtures).forEach(([name, source]) => {
-    it(name, () => {
+    it(name, async () => {
       const env: MarkdownItEnv = {};
-      md.render(source, env);
+      await md.render(source, env);
       expect(env.headers).toEqual([]);
     });
   });
 });
 
-describe('should extract headers (h1, h2, h3, h4)', () => {
-  const md = MarkdownIt().use(headersPlugin, {
+describe('should extract headers (h1, h2, h3, h4)', async () => {
+  const md = new MarkdownIt().use(headersPlugin, {
     level: [1, 2, 3, 4],
   });
+  await md.isReady();
 
   Object.entries(fixtures).forEach(([name, source]) => {
-    it(name, () => {
+    it(name, async () => {
       const env: MarkdownItEnv = {};
-      md.render(source, env);
+      await md.render(source, env);
       expect(env.headers).toMatchSnapshot();
     });
   });
 });
 
-describe('should not include html elements and should not escape texts', () => {
-  const md = MarkdownIt({
+describe('should not include html elements and should not escape texts', async () => {
+  const md = new MarkdownIt({
     html: true,
   })
-    .use(anchorPlugin, { slugify })
+    .use(anchor, { slugify })
     .use(headersPlugin, { slugify });
+
+  await md.isReady();
 
   const testCases: [string, MarkdownItHeader[]][] = [
     // html element should be ignored
@@ -142,9 +148,9 @@ describe('should not include html elements and should not escape texts', () => {
   ];
 
   testCases.forEach(([source, expected], i) => {
-    it(`case ${i}`, () => {
+    it(`case ${i}`, async () => {
       const env: MarkdownItEnv = {};
-      md.render(source, env);
+      await md.render(source, env);
       expect(env.headers).toEqual(expected);
     });
   });

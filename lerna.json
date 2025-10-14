@@ -3,7 +3,7 @@
   "version": "3.0.2",
   "command": {
     "version": {
-      "allowBranch": "main",
+      "allowBranch": "for-enhancer",
       "conventionalCommits": true,
       "exact": true,
       "message": "build: version %v",

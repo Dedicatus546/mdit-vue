@@ -1,5 +1,5 @@
-import { htmlEscape } from '@mdit-vue/shared';
-import type { MarkdownItHeader } from '@mdit-vue/types';
+import { htmlEscape } from '@mdit-vue-for-enhancer/shared';
+import type { MarkdownItHeader } from '@mdit-vue-for-enhancer/types';
 import type { TocPluginOptions } from './types.js';
 
 type RenderHeadersFn = (headers: MarkdownItHeader[]) => string;

@@ -1,8 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
-export interface MarkdownItEnv {
-  // to be extended with module augmentation
-}
-
 export interface MarkdownItHeader {
   /**
    * The level of the header

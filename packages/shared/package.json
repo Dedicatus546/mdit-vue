@@ -1,22 +1,15 @@
 {
-  "name": "@mdit-vue/shared",
+  "name": "@mdit-vue-for-enhancer/shared",
   "version": "3.0.2",
   "description": "Shared utils and types of mdit-vue",
   "keywords": [
     "markdown-it",
+    "markdown-it-enhancer",
     "vue",
     "utils"
   ],
-  "homepage": "https://github.com/mdit-vue",
-  "bugs": {
-    "url": "https://github.com/mdit-vue/mdit-vue/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mdit-vue/mdit-vue.git"
-  },
   "license": "MIT",
-  "author": "meteorlxy <meteor.lxy@foxmail.com>",
+  "author": "Par9uet <par9uet@qq.com>",
   "type": "module",
   "exports": {
     ".": "./dist/index.js",
@@ -34,9 +27,7 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@mdit-vue/types": "workspace:*",
-    "@types/markdown-it": "catalog:prod",
-    "markdown-it": "catalog:prod"
+    "@mdit-vue-for-enhancer/types": "workspace:*"
   },
   "devDependencies": {
     "tsdown": "catalog:dev",
@@ -44,6 +35,9 @@
   },
   "engines": {
     "node": ">=20.0.0"
+  },
+  "peerDependencies": {
+    "markdown-it-enhancer": "catalog:peer"
   },
   "publishConfig": {
     "access": "public"

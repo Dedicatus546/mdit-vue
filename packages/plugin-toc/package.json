@@ -1,24 +1,17 @@
 {
-  "name": "@mdit-vue/plugin-toc",
+  "name": "@mdit-vue-for-enhancer/plugin-toc",
   "version": "3.0.2",
   "description": "A markdown-it plugin to generate table-of-contents that compatible with Vue.js",
   "keywords": [
     "markdown-it",
+    "markdown-it-enhancer",
     "markdown-it-plugin",
     "vue",
     "toc",
     "table-of-contents"
   ],
-  "homepage": "https://github.com/mdit-vue",
-  "bugs": {
-    "url": "https://github.com/mdit-vue/mdit-vue/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mdit-vue/mdit-vue.git"
-  },
   "license": "MIT",
-  "author": "meteorlxy <meteor.lxy@foxmail.com>",
+  "author": "Par9uet <par9uet@qq.com>",
   "type": "module",
   "exports": {
     ".": "./dist/index.js",
@@ -36,18 +29,19 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@mdit-vue/shared": "workspace:*",
-    "@mdit-vue/types": "workspace:*",
-    "@types/markdown-it": "catalog:prod",
-    "markdown-it": "catalog:prod"
+    "@mdit-vue-for-enhancer/shared": "workspace:*",
+    "@mdit-vue-for-enhancer/types": "workspace:*"
   },
   "devDependencies": {
-    "markdown-it-anchor": "catalog:dev-test",
+    "markdown-it-anchor-for-enhancer": "catalog:dev-test",
     "tsdown": "catalog:dev",
     "vitest": "catalog:dev"
   },
   "engines": {
     "node": ">=20.0.0"
+  },
+  "peerDependencies": {
+    "markdown-it-enhancer": "catalog:peer"
   },
   "publishConfig": {
     "access": "public"

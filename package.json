@@ -1,5 +1,5 @@
 {
-  "name": "@mdit-vue/monorepo",
+  "name": "@mdit-vue-for-enhancer/monorepo",
   "private": true,
   "type": "module",
   "scripts": {

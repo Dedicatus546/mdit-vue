@@ -1,12 +1,13 @@
-import MarkdownIt from 'markdown-it';
+import { MarkdownIt } from 'markdown-it-enhancer';
 import { describe, expect, it } from 'vitest';
 import { componentPlugin } from '../src/index.js';
 import { createBlockTestCases } from './create-block-test-cases.js';
 import { createInlineTestCases } from './create-inline-test-cases.js';
 
-describe('compatibility with other markdown syntax', () => {
-  const md = MarkdownIt({ html: true }).use(componentPlugin);
-  it('should work with autolink', () => {
+describe('compatibility with other markdown syntax', async () => {
+  const md = new MarkdownIt({ html: true }).use(componentPlugin);
+  await md.isReady();
+  it('should work with autolink', async () => {
     const source = [
       '<https://github.com>',
       '<localhost:5001/foo>',
@@ -28,19 +29,20 @@ describe('compatibility with other markdown syntax', () => {
         .map((a) => `<p>${a}</p>`)
         .join('\n') + '\n';
 
-    const rendered = md.render(source);
+    const rendered = await md.render(source);
     expect(rendered).toBe(expected);
   });
 });
 
 describe('options', () => {
-  describe('should allow setting blockTags and inlineTags', () => {
+  describe('should allow setting blockTags and inlineTags', async () => {
     const blockTags = ['img', 'slot'];
     const inlineTags = ['Foo', 'foo-bar', 'FooBar', 'fooBar'];
-    const md = MarkdownIt({ html: true }).use(componentPlugin, {
+    const md = new MarkdownIt({ html: true }).use(componentPlugin, {
       blockTags,
       inlineTags,
     });
+    await md.isReady();
     const testCases = [
       ...createBlockTestCases(blockTags),
       ...createInlineTestCases(inlineTags),
@@ -49,8 +51,8 @@ describe('options', () => {
     testCases.forEach(({ name, cases }) => {
       describe(name, () => {
         cases.forEach(([source, expected], index) => {
-          it(`case ${index}`, () => {
-            const rendered = md.render(source);
+          it(`case ${index}`, async () => {
+            const rendered = await md.render(source);
             expect(rendered).toBe(expected);
           });
         });
@@ -58,20 +60,21 @@ describe('options', () => {
     });
   });
 
-  it('blockTags should have higher priority', () => {
+  it('blockTags should have higher priority', async () => {
     const blockTags = ['force-block', 'ForceBlock'];
     const inlineTags = blockTags;
-    const md = MarkdownIt({ html: true }).use(componentPlugin, {
+    const md = new MarkdownIt({ html: true }).use(componentPlugin, {
       blockTags,
       inlineTags,
     });
+    await md.isReady();
     const testCases = createBlockTestCases(inlineTags);
 
     testCases.forEach(({ name, cases }) => {
       describe(name, () => {
         cases.forEach(([source, expected], index) => {
-          it(`case ${index}`, () => {
-            const rendered = md.render(source);
+          it(`case ${index}`, async () => {
+            const rendered = await md.render(source);
             expect(rendered).toBe(expected);
           });
         });

@@ -1,6 +1,5 @@
-import type { MarkdownItEnv } from '@mdit-vue/types';
 import grayMatter from 'gray-matter';
-import type { PluginWithOptions } from 'markdown-it';
+import type { MarkdownItPlugin } from 'markdown-it-enhancer';
 import type { FrontmatterPluginOptions } from './types.js';
 
 /**
@@ -8,12 +7,12 @@ import type { FrontmatterPluginOptions } from './types.js';
  *
  * Extract them into env
  */
-export const frontmatterPlugin: PluginWithOptions<FrontmatterPluginOptions> = (
+export const frontmatterPlugin: MarkdownItPlugin<[FrontmatterPluginOptions]> = (
   md,
   { grayMatterOptions, renderExcerpt = true } = {},
 ): void => {
   const parse = md.parse.bind(md);
-  md.parse = (src, env: MarkdownItEnv = {}) => {
+  md.parse = async (src, env = {}) => {
     const { data, content, excerpt = '' } = grayMatter(src, grayMatterOptions);
 
     // extract stripped content
@@ -32,7 +31,7 @@ export const frontmatterPlugin: PluginWithOptions<FrontmatterPluginOptions> = (
         ? // render the excerpt with original markdown-it render method.
           // here we spread `env` to avoid mutating the original object.
           // using deep clone might be a safer choice.
-          md.render(excerpt, { ...env })
+          await md.render(excerpt, { ...env })
         : // use the raw excerpt directly
           excerpt;
 

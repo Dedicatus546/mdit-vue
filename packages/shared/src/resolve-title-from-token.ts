@@ -1,4 +1,4 @@
-import type Token from 'markdown-it/lib/token.mjs';
+import type { Token } from 'markdown-it-enhancer';
 import { htmlEscape } from './html-escape.js';
 
 interface TokenMeta {
@@ -38,7 +38,7 @@ export const resolveTitleFromToken = (
   { shouldAllowHtml, shouldEscapeText }: ResolveTitleOptions,
 ): string => {
   // children of the token contains the parsed result of the heading title
-  const children = token.children ?? [];
+  const children = token.children;
 
   // type of tokens to be included in the heading title
   const titleTokenTypes = ['text', 'emoji', 'code_inline'];

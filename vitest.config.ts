@@ -8,7 +8,7 @@ export default defineConfig({
   resolve: {
     alias: [
       {
-        find: /^@mdit-vue\/([^/]*)$/,
+        find: /^@mdit-vue-for-enhancer\/([^/]*)$/,
         replacement: path.resolve(root, './packages/$1/src/index.ts'),
       },
     ],

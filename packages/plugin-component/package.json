@@ -1,23 +1,16 @@
 {
-  "name": "@mdit-vue/plugin-component",
+  "name": "@mdit-vue-for-enhancer/plugin-component",
   "version": "3.0.2",
   "description": "A markdown-it plugin to allow vue components in markdown",
   "keywords": [
     "markdown-it",
+    "markdown-it-enhancer",
     "markdown-it-plugin",
     "vue",
     "component"
   ],
-  "homepage": "https://github.com/mdit-vue",
-  "bugs": {
-    "url": "https://github.com/mdit-vue/mdit-vue/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mdit-vue/mdit-vue.git"
-  },
   "license": "MIT",
-  "author": "meteorlxy <meteor.lxy@foxmail.com>",
+  "author": "Par9uet <par9uet@qq.com>",
   "type": "module",
   "exports": {
     ".": "./dist/index.js",
@@ -34,10 +27,6 @@
     "clean": "rimraf ./dist",
     "test": "vitest"
   },
-  "dependencies": {
-    "@types/markdown-it": "catalog:prod",
-    "markdown-it": "catalog:prod"
-  },
   "devDependencies": {
     "@vue/shared": "catalog:dev-test",
     "tsdown": "catalog:dev",
@@ -45,6 +34,9 @@
   },
   "engines": {
     "node": ">=20.0.0"
+  },
+  "peerDependencies": {
+    "markdown-it-enhancer": "^15.1.0"
   },
   "publishConfig": {
     "access": "public"

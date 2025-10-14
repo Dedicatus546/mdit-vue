@@ -1,6 +1,6 @@
-import { slugify } from '@mdit-vue/shared';
-import MarkdownIt from 'markdown-it';
-import anchorPlugin from 'markdown-it-anchor';
+import { slugify } from '@mdit-vue-for-enhancer/shared';
+import { anchor, ariaHidden } from 'markdown-it-anchor-for-enhancer';
+import { MarkdownIt } from 'markdown-it-enhancer';
 import { describe, expect, it } from 'vitest';
 import { tocPlugin } from '../src/index.js';
 
@@ -41,45 +41,49 @@ const fixtures = {
 `,
 };
 
-describe('should render toc with default option (h2, h3)', () => {
-  const md = MarkdownIt().use(tocPlugin);
+describe('should render toc with default option (h2, h3)', async () => {
+  const md = new MarkdownIt().use(tocPlugin);
+  await md.isReady();
 
   Object.entries(fixtures).forEach(([name, source]) => {
-    it(name, () => {
-      const result = md.render(source);
+    it(name, async () => {
+      const result = await md.render(source);
       expect(result).toMatchSnapshot();
     });
   });
 });
 
-describe('should render toc (h1, h2, h3, h4)', () => {
-  const md = MarkdownIt().use(tocPlugin, {
+describe('should render toc (h1, h2, h3, h4)', async () => {
+  const md = new MarkdownIt().use(tocPlugin, {
     level: [1, 2, 3, 4],
   });
+  await md.isReady();
 
   Object.entries(fixtures).forEach(([name, source]) => {
-    it(name, () => {
-      const result = md.render(source);
+    it(name, async () => {
+      const result = await md.render(source);
       expect(result).toMatchSnapshot();
     });
   });
 });
 
-describe('should render toc with RouterLink', () => {
-  const md = MarkdownIt().use(tocPlugin, {
+describe('should render toc with RouterLink', async () => {
+  const md = new MarkdownIt().use(tocPlugin, {
+    // @ts-expect-error 这里类型似乎不匹配，可以使用驼峰
     linkTag: 'RouterLink',
   });
+  await md.isReady();
 
   Object.entries(fixtures).forEach(([name, source]) => {
-    it(name, () => {
-      const result = md.render(source);
+    it(name, async () => {
+      const result = await md.render(source);
       expect(result).toMatchSnapshot();
     });
   });
 });
 
-describe('should render class name correctly', () => {
-  const md = MarkdownIt().use(tocPlugin, {
+describe('should render class name correctly', async () => {
+  const md = new MarkdownIt().use(tocPlugin, {
     // remove default container class
     containerClass: '',
     // add custom list / item / link class
@@ -87,23 +91,24 @@ describe('should render class name correctly', () => {
     itemClass: 'toc-item',
     linkClass: 'toc-link',
   });
+  await md.isReady();
 
   Object.entries(fixtures).forEach(([name, source]) => {
-    it(name, () => {
-      const result = md.render(source);
+    it(name, async () => {
+      const result = await md.render(source);
       expect(result).toMatchSnapshot();
     });
   });
 });
 
-describe('should include html elements and should escape texts', () => {
-  const md = MarkdownIt({
+describe('should include html elements and should escape texts', async () => {
+  const md = new MarkdownIt({
     html: true,
   })
-    .use(anchorPlugin, {
+    .use(anchor, {
       level: [1, 2, 3, 4, 5, 6],
       slugify,
-      permalink: anchorPlugin.permalink.ariaHidden({
+      permalink: ariaHidden({
         class: 'header-anchor',
         symbol: '#',
         space: true,
@@ -111,6 +116,7 @@ describe('should include html elements and should escape texts', () => {
       }),
     })
     .use(tocPlugin, { slugify });
+  await md.isReady();
 
   const testCases: [string, { slug: string; title: string; h2: string }][] = [
     // html element should be kept as is
@@ -164,8 +170,8 @@ describe('should include html elements and should escape texts', () => {
   ];
 
   testCases.forEach(([source, expected], i) => {
-    it(`case ${i}`, () => {
-      expect(md.render(source)).toEqual(`\
+    it(`case ${i}`, async () => {
+      expect(await md.render(source)).toEqual(`\
 <nav class="table-of-contents"><ul><li><a href="#${expected.slug}">${expected.title}</a></li></ul></nav>
 <h2 id="${expected.slug}" tabindex="-1"><a class="header-anchor" href="#${expected.slug}" aria-hidden="true">#</a> ${expected.h2}</h2>
 `);
@@ -174,14 +180,15 @@ describe('should include html elements and should escape texts', () => {
 });
 
 describe('edge cases', () => {
-  it('should not terminate the blockquote', () => {
-    const md = MarkdownIt().use(tocPlugin);
+  it('should not terminate the blockquote', async () => {
+    const md = new MarkdownIt().use(tocPlugin);
+    await md.isReady();
 
     const source = `\
 > foo
     [[toc]]
 `;
-    expect(md.render(source)).toEqual(`\
+    expect(await md.render(source)).toEqual(`\
 <blockquote>
 <p>foo
 [[toc]]</p>

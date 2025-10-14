@@ -22,12 +22,12 @@ catalogs:
     vitest: ^3.2.4
 
   dev-test:
-    '@types/markdown-it-emoji': ^3.0.1
     '@vue/shared': ^3.5.21
-    markdown-it-anchor: ^9.2.0
-    markdown-it-emoji: ^3.0.0
+    markdown-it-anchor-for-enhancer: ^10.0.4
+    markdown-it-emoji-for-enhancer: ^4.0.2
 
   prod:
-    '@types/markdown-it': ^14.1.2
     gray-matter: ^4.0.3
-    markdown-it: ^14.1.0
+
+  peer:
+    markdown-it-enhancer: ^15.1.0

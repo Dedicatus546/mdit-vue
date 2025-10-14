@@ -1,11 +1,11 @@
-import type { MarkdownItHeader } from '@mdit-vue/types';
-import MarkdownIt from 'markdown-it';
+import type { MarkdownItHeader } from '@mdit-vue-for-enhancer/types';
+import { MarkdownIt } from 'markdown-it-enhancer';
 import { describe, expect, it } from 'vitest';
 import { resolveHeadersFromTokens, slugify } from '../src/index.js';
 
-const md = MarkdownIt();
+const md = new MarkdownIt();
 
-it('should resolve headers correctly', () => {
+it('should resolve headers correctly', async () => {
   const source = `\
 # h1
 ## h2
@@ -14,7 +14,7 @@ it('should resolve headers correctly', () => {
 ##### h5
 ###### h6
 `;
-  const tokens = md.parse(source, {});
+  const tokens = await md.parse(source, {});
   const expected: MarkdownItHeader[] = [
     {
       level: 1,
@@ -60,7 +60,7 @@ it('should resolve headers correctly', () => {
   ).toEqual(expected);
 });
 
-describe('shouldAllowNested', () => {
+describe('shouldAllowNested', async () => {
   const source = `\
 > # h1 in blockquote
 > ## h2 in blockquote
@@ -71,7 +71,7 @@ describe('shouldAllowNested', () => {
 # h1 outside nested blocks
 ## h2 outside nested blocks
 `;
-  const tokens = md.parse(source, {});
+  const tokens = await md.parse(source, {});
 
   it('should not resolve headers in nested blocks', () => {
     const expected: MarkdownItHeader[] = [

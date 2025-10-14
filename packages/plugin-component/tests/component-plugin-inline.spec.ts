@@ -1,4 +1,4 @@
-import MarkdownIt from 'markdown-it';
+import { MarkdownIt } from 'markdown-it-enhancer';
 import { describe, expect, it } from 'vitest';
 import {
   TAGS_BLOCK,
@@ -13,14 +13,15 @@ const inlineTags = TAGS_INLINE.filter(
   (item) => !forceNonInlineTags.includes(item),
 );
 
-describe('should render html inline tags correctly', () => {
-  const md = MarkdownIt({ html: true }).use(componentPlugin);
+describe('should render html inline tags correctly', async () => {
+  const md = new MarkdownIt({ html: true }).use(componentPlugin);
+  await md.isReady();
   const testCases = createInlineTestCases(inlineTags);
   testCases.forEach(({ name, cases }) => {
     describe(name, () => {
       cases.forEach(([source, expected], index) => {
-        it(`case ${index}`, () => {
-          const rendered = md.render(source);
+        it(`case ${index}`, async () => {
+          const rendered = await md.render(source);
           expect(rendered).toBe(expected);
         });
       });
@@ -28,15 +29,15 @@ describe('should render html inline tags correctly', () => {
   });
 });
 
-it('should render invalid html inline tags correctly', () => {
-  const md = MarkdownIt({ html: true }).use(componentPlugin);
-
+it('should render invalid html inline tags correctly', async () => {
+  const md = new MarkdownIt({ html: true }).use(componentPlugin);
+  await md.isReady();
   const source = ['<1 />', '<中文 />', '<@foo />'].join('\n\n');
   const expected =
     ['&lt;1 /&gt;', '&lt;中文 /&gt;', '&lt;@foo /&gt;']
       .map((item) => `<p>${item}</p>`)
       .join('\n') + '\n';
 
-  const rendered = md.render(source);
+  const rendered = await md.render(source);
   expect(rendered).toBe(expected);
 });

@@ -1,4 +1,4 @@
-import type { MarkdownItHeader } from '@mdit-vue/types';
+import type { MarkdownItHeader } from '@mdit-vue-for-enhancer/types';
 
 export type { MarkdownItHeader };
 
@@ -39,7 +39,7 @@ export interface HeadersPluginOptions {
   shouldAllowNested?: boolean;
 }
 
-declare module '@mdit-vue/types' {
+declare module 'markdown-it-enhancer' {
   interface MarkdownItEnv {
     /**
      * The headers that extracted by `@mdit-vue/plugin-headers`

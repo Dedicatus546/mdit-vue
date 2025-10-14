@@ -1,8 +1,8 @@
 import {
   slugify as defaultSlugify,
   resolveHeadersFromTokens,
-} from '@mdit-vue/shared';
-import type { PluginWithOptions } from 'markdown-it';
+} from '@mdit-vue-for-enhancer/shared';
+import type { MarkdownItPlugin } from 'markdown-it-enhancer';
 import { createRenderHeaders } from './create-render-headers.js';
 import { createTocBlockRule } from './create-toc-block-rule.js';
 import type { TocPluginOptions } from './types.js';
@@ -14,7 +14,7 @@ import type { TocPluginOptions } from './types.js';
  *
  * @see https://github.com/nagaozen/markdown-it-toc-done-right
  */
-export const tocPlugin: PluginWithOptions<TocPluginOptions> = (
+export const tocPlugin: MarkdownItPlugin<[options?: TocPluginOptions]> = (
   md,
   {
     pattern = /^\[\[toc\]\]$/i,

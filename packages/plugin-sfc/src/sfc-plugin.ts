@@ -1,5 +1,4 @@
-import type { MarkdownItEnv } from '@mdit-vue/types';
-import type { PluginWithOptions } from 'markdown-it';
+import type { MarkdownItEnv, MarkdownItPlugin } from 'markdown-it-enhancer';
 import {
   TAG_NAME_SCRIPT,
   TAG_NAME_STYLE,
@@ -14,7 +13,7 @@ import type { SfcPluginOptions } from './types.js';
  *
  * Extract them into env and avoid rendering them
  */
-export const sfcPlugin: PluginWithOptions<SfcPluginOptions> = (
+export const sfcPlugin: MarkdownItPlugin<[options?: SfcPluginOptions]> = (
   md,
   { customBlocks = [] }: SfcPluginOptions = {},
 ): void => {
@@ -22,7 +21,7 @@ export const sfcPlugin: PluginWithOptions<SfcPluginOptions> = (
 
   // wrap the original render function
   const render = md.render.bind(md);
-  md.render = (src, env: MarkdownItEnv = {}) => {
+  md.render = async (src, env: MarkdownItEnv = {}) => {
     // initialize `env.sfcBlocks`
     env.sfcBlocks = {
       template: null,
@@ -34,7 +33,7 @@ export const sfcPlugin: PluginWithOptions<SfcPluginOptions> = (
     };
 
     // call the original render function to get the rendered result
-    const rendered = render(src, env);
+    const rendered = await render(src, env);
 
     // create template block from the rendered result
     env.sfcBlocks.template = {
@@ -49,7 +48,7 @@ export const sfcPlugin: PluginWithOptions<SfcPluginOptions> = (
   };
 
   // wrap the original html_block renderer rule
-  const htmlBlockRule = md.renderer.rules.html_block!;
+  const htmlBlockRule = md.renderer.rules.html_block;
   md.renderer.rules.html_block = (
     tokens,
     idx,
@@ -68,7 +67,9 @@ export const sfcPlugin: PluginWithOptions<SfcPluginOptions> = (
     const content = token.content;
 
     // try to match sfc
-    const match = content.match(sfcRegexp) as SfcRegExpMatchArray | null;
+    const match = content.match(
+      sfcRegexp,
+    ) as unknown as SfcRegExpMatchArray | null;
     if (!match) {
       return htmlBlockRule(tokens, idx, options, env, self);
     }
