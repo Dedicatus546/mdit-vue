@@ -1,5 +1,5 @@
+import { MarkdownIt } from '@markdown-it-enhancer/core';
 import type { MarkdownItHeader } from '@mdit-vue-for-enhancer/types';
-import { MarkdownIt } from 'markdown-it-enhancer';
 import { describe, expect, it } from 'vitest';
 import { resolveHeadersFromTokens, slugify } from '../src/index.js';
 

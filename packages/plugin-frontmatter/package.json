@@ -29,18 +29,18 @@
     "test": "vitest"
   },
   "dependencies": {
-    "gray-matter": "catalog:prod",
-    "@mdit-vue-for-enhancer/types": "workspace:*"
+    "@mdit-vue-for-enhancer/types": "workspace:*",
+    "gray-matter": "catalog:prod"
   },
   "devDependencies": {
     "tsdown": "catalog:dev",
     "vitest": "catalog:dev"
   },
+  "peerDependencies": {
+    "@markdown-it-enhancer/core": "catalog:peer"
+  },
   "engines": {
     "node": ">=20.0.0"
-  },
-  "peerDependencies": {
-    "markdown-it-enhancer": "^15.1.0"
   },
   "publishConfig": {
     "access": "public"

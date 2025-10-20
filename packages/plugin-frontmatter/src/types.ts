@@ -21,7 +21,7 @@ export interface FrontmatterPluginOptions {
   renderExcerpt?: boolean;
 }
 
-declare module 'markdown-it-enhancer' {
+declare module '@markdown-it-enhancer/core' {
   export interface MarkdownItEnv {
     /**
      * The raw Markdown content without frontmatter

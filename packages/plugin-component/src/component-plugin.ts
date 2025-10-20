@@ -1,4 +1,4 @@
-import type { MarkdownItPlugin } from 'markdown-it-enhancer';
+import type { MarkdownItPlugin } from '@markdown-it-enhancer/core';
 import { createHtmlBlockRule } from './html-block-rule.js';
 import { htmlInlineRule } from './html-inline-rule.js';
 import type { ComponentPluginOptions } from './types.js';

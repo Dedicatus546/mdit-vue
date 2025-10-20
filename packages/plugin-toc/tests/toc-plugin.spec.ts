@@ -1,6 +1,6 @@
+import { MarkdownIt } from '@markdown-it-enhancer/core';
+import { anchor, ariaHidden } from '@markdown-it-enhancer/plugin-anchor';
 import { slugify } from '@mdit-vue-for-enhancer/shared';
-import { anchor, ariaHidden } from 'markdown-it-anchor-for-enhancer';
-import { MarkdownIt } from 'markdown-it-enhancer';
 import { describe, expect, it } from 'vitest';
 import { tocPlugin } from '../src/index.js';
 

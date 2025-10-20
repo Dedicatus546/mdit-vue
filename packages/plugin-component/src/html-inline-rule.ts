@@ -1,4 +1,4 @@
-import type { StateInlineRuleFn } from 'markdown-it-enhancer';
+import type { StateInlineRuleFn } from '@markdown-it-enhancer/core';
 import { HTML_TAG_RE } from './html-re.js';
 
 // Forked and modified from 'markdown-it/lib/rules_inline/html_inline.js'

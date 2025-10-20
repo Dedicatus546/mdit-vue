@@ -39,7 +39,7 @@ export interface HeadersPluginOptions {
   shouldAllowNested?: boolean;
 }
 
-declare module 'markdown-it-enhancer' {
+declare module '@markdown-it-enhancer/core' {
   interface MarkdownItEnv {
     /**
      * The headers that extracted by `@mdit-vue/plugin-headers`

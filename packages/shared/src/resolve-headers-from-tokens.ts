@@ -1,5 +1,5 @@
+import type { Token } from '@markdown-it-enhancer/core';
 import type { MarkdownItHeader } from '@mdit-vue-for-enhancer/types';
-import type { Token } from 'markdown-it-enhancer';
 import type { ResolveTitleOptions } from './resolve-title-from-token.js';
 import { resolveTitleFromToken } from './resolve-title-from-token.js';
 

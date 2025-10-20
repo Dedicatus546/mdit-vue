@@ -23,11 +23,11 @@ catalogs:
 
   dev-test:
     '@vue/shared': ^3.5.21
-    markdown-it-anchor-for-enhancer: ^10.0.4
-    markdown-it-emoji-for-enhancer: ^4.0.2
+    '@markdown-it-enhancer/plugin-anchor': ^1.0.0
+    '@markdown-it-enhancer/plugin-emoji': ^1.0.0
 
   prod:
     gray-matter: ^4.0.3
 
   peer:
-    markdown-it-enhancer: ^15.1.0
+    '@markdown-it-enhancer/core': ^1.0.0

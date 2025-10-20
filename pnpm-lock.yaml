@@ -58,19 +58,19 @@ catalogs:
       specifier: ^3.2.4
       version: 3.2.4
   dev-test:
+    '@markdown-it-enhancer/plugin-anchor':
+      specifier: ^1.0.0
+      version: 1.0.0
+    '@markdown-it-enhancer/plugin-emoji':
+      specifier: ^1.0.0
+      version: 1.0.0
     '@vue/shared':
       specifier: ^3.5.21
       version: 3.5.21
-    markdown-it-anchor-for-enhancer:
-      specifier: ^10.0.4
-      version: 10.0.4
-    markdown-it-emoji-for-enhancer:
-      specifier: ^4.0.2
-      version: 4.0.2
   peer:
-    markdown-it-enhancer:
-      specifier: ^15.1.0
-      version: 15.1.0
+    '@markdown-it-enhancer/core':
+      specifier: ^1.0.0
+      version: 1.0.0
   prod:
     gray-matter:
       specifier: ^4.0.3
@@ -134,9 +134,9 @@ importers:
 
   packages/plugin-component:
     dependencies:
-      markdown-it-enhancer:
-        specifier: ^15.1.0
-        version: 15.1.0
+      '@markdown-it-enhancer/core':
+        specifier: catalog:peer
+        version: 1.0.0
     devDependencies:
       '@vue/shared':
         specifier: catalog:dev-test
@@ -150,15 +150,15 @@ importers:
 
   packages/plugin-frontmatter:
     dependencies:
+      '@markdown-it-enhancer/core':
+        specifier: catalog:peer
+        version: 1.0.0
       '@mdit-vue-for-enhancer/types':
         specifier: workspace:*
         version: link:../types
       gray-matter:
         specifier: catalog:prod
         version: 4.0.3
-      markdown-it-enhancer:
-        specifier: ^15.1.0
-        version: 15.1.0
     devDependencies:
       tsdown:
         specifier: catalog:dev
@@ -169,19 +169,19 @@ importers:
 
   packages/plugin-headers:
     dependencies:
+      '@markdown-it-enhancer/core':
+        specifier: catalog:peer
+        version: 1.0.0
       '@mdit-vue-for-enhancer/shared':
         specifier: workspace:*
         version: link:../shared
       '@mdit-vue-for-enhancer/types':
         specifier: workspace:*
         version: link:../types
-      markdown-it-enhancer:
-        specifier: catalog:peer
-        version: 15.1.0
     devDependencies:
-      markdown-it-anchor-for-enhancer:
+      '@markdown-it-enhancer/plugin-anchor':
         specifier: catalog:dev-test
-        version: 10.0.4(markdown-it-enhancer@15.1.0)
+        version: 1.0.0(@markdown-it-enhancer/core@1.0.0)
       tsdown:
         specifier: catalog:dev
         version: 0.15.4(typescript@5.9.2)
@@ -191,12 +191,12 @@ importers:
 
   packages/plugin-sfc:
     dependencies:
+      '@markdown-it-enhancer/core':
+        specifier: catalog:peer
+        version: 1.0.0
       '@mdit-vue-for-enhancer/types':
         specifier: workspace:*
         version: link:../types
-      markdown-it-enhancer:
-        specifier: catalog:peer
-        version: 15.1.0
     devDependencies:
       tsdown:
         specifier: catalog:dev
@@ -207,19 +207,19 @@ importers:
 
   packages/plugin-title:
     dependencies:
+      '@markdown-it-enhancer/core':
+        specifier: catalog:peer
+        version: 1.0.0
       '@mdit-vue-for-enhancer/shared':
         specifier: workspace:*
         version: link:../shared
       '@mdit-vue-for-enhancer/types':
         specifier: workspace:*
         version: link:../types
-      markdown-it-enhancer:
-        specifier: catalog:peer
-        version: 15.1.0
     devDependencies:
-      markdown-it-emoji-for-enhancer:
+      '@markdown-it-enhancer/plugin-emoji':
         specifier: catalog:dev-test
-        version: 4.0.2(markdown-it-enhancer@15.1.0)
+        version: 1.0.0(@markdown-it-enhancer/core@1.0.0)
       tsdown:
         specifier: catalog:dev
         version: 0.15.4(typescript@5.9.2)
@@ -229,19 +229,19 @@ importers:
 
   packages/plugin-toc:
     dependencies:
+      '@markdown-it-enhancer/core':
+        specifier: catalog:peer
+        version: 1.0.0
       '@mdit-vue-for-enhancer/shared':
         specifier: workspace:*
         version: link:../shared
       '@mdit-vue-for-enhancer/types':
         specifier: workspace:*
         version: link:../types
-      markdown-it-enhancer:
-        specifier: catalog:peer
-        version: 15.1.0
     devDependencies:
-      markdown-it-anchor-for-enhancer:
+      '@markdown-it-enhancer/plugin-anchor':
         specifier: catalog:dev-test
-        version: 10.0.4(markdown-it-enhancer@15.1.0)
+        version: 1.0.0(@markdown-it-enhancer/core@1.0.0)
       tsdown:
         specifier: catalog:dev
         version: 0.15.4(typescript@5.9.2)
@@ -251,12 +251,12 @@ importers:
 
   packages/shared:
     dependencies:
+      '@markdown-it-enhancer/core':
+        specifier: catalog:peer
+        version: 1.0.0
       '@mdit-vue-for-enhancer/types':
         specifier: workspace:*
         version: link:../types
-      markdown-it-enhancer:
-        specifier: catalog:peer
-        version: 15.1.0
     devDependencies:
       tsdown:
         specifier: catalog:dev
@@ -789,6 +789,52 @@ packages:
   '@lerna-lite/version@4.8.0':
     resolution: {integrity: sha512-WCvaSlY2TjJzDi6ZRYGP5ZPeDOo3NVj5mrq11n8e4CICspxRkBR9fvVk4p2B9BAIAy9pG5FDcVBvplAUpkakGQ==}
     engines: {node: ^20.17.0 || >=22.9.0}
+
+  '@markdown-it-enhancer/core@1.0.0':
+    resolution: {integrity: sha512-Mt6VwmpI+p3kWBishvEHKg3bpSW+UlzT6cLwUh0COr7AOcGNQAlbxaW1AtEH2dyytPRlMQi1EhvXO4Gz26B/vA==}
+    engines: {node: '>=20'}
+
+  '@markdown-it-enhancer/entities@1.0.0':
+    resolution: {integrity: sha512-kzeqnxQPoyWY9OXdHbEn93q6casaOQ+bwvzpjAc5+3N3H6ArecbVdSn2sy3U2qkrvVyllfsu9NPDKqLEM9+XpQ==}
+    engines: {node: '>=20'}
+
+  '@markdown-it-enhancer/linkify-it@1.0.0':
+    resolution: {integrity: sha512-rBTiAsToqFFN+Thh+/xtWavm3HKoYABOYVkJcud0ai3prGgc8s2wR+a/F596f1XMwi+JbyXkLwAQwe7bOlu5DQ==}
+    engines: {node: '>=20'}
+
+  '@markdown-it-enhancer/mdurl@1.0.0':
+    resolution: {integrity: sha512-wPvbN0qpQNNi7bzTyQRsPxUcI0CtqFaqLSG8/Cz/4pA4PCYXN0UMhjBKiLa2JV+HupnAp7EFJFzSEKZrGHsD8w==}
+    engines: {node: '>=20'}
+
+  '@markdown-it-enhancer/plugin-anchor@1.0.0':
+    resolution: {integrity: sha512-6nNdZt+NocNFrWNvW470F4SFD3vyN8yVwdQcmTB+vaNDT07I2YTX+Z4q3eskhA2VC7RpQ/m0S769XKRJ2tlzxg==}
+    engines: {node: '>=20'}
+    peerDependencies:
+      '@markdown-it-enhancer/core': ~1.0.0
+    peerDependenciesMeta:
+      '@markdown-it-enhancer/core':
+        optional: true
+
+  '@markdown-it-enhancer/plugin-emoji@1.0.0':
+    resolution: {integrity: sha512-Ubkx+NtF/5rc9b/HCKDyYG/WzieXWl/zVJzZqEWr9I4o2weseGUpdqJJY5dUnAlGaVyCnLvtpauLPtn0vtqa6w==}
+    engines: {node: '>=20'}
+    peerDependencies:
+      '@markdown-it-enhancer/core': ~1.0.0
+    peerDependenciesMeta:
+      '@markdown-it-enhancer/core':
+        optional: true
+
+  '@markdown-it-enhancer/punycode.js@1.0.0':
+    resolution: {integrity: sha512-R1jWCgrkgs1OC2Tr7VRX+pfM7ei4FauyUvJRfQ7QXOAj0vNt3dKe5nI3aMiFJ02RF3Qrtrv2lYep+7QKulq1WQ==}
+    engines: {node: '>=20'}
+
+  '@markdown-it-enhancer/shared@1.0.0':
+    resolution: {integrity: sha512-pQInaxsWmBx7UaK8XIUCLjHv6ssOtnu9mF422q0q7WLaebpLJpefeikP4JbJkcFvIIqlYJ8M3gpEATQlYX3hGg==}
+    engines: {node: '>=20'}
+
+  '@markdown-it-enhancer/uc.micro@1.0.0':
+    resolution: {integrity: sha512-aHdAYlqsTnoWPV8VCaDndnh9moE+tDjQfqv3ieeqC2s6OPjyHrRNV5EuiWuRLxgfLPinI6YyzimqNx4IqcXQVw==}
+    engines: {node: '>=20'}
 
   '@meteorlxy/eslint-config@6.6.2':
     resolution: {integrity: sha512-Z58cDmZGJz5fgfvFGcXicgA51/xszuKkyFRhjttORQogg8ekzceWxIKrCQe1hYGqggjEelivEaXlpHlqzehD8Q==}
@@ -1892,10 +1938,6 @@ packages:
   encoding@0.1.13:
     resolution: {integrity: sha512-ETBauow1T35Y/WZMkio9jiM0Z5xjHHmJ4XmjZOq1l/dXz3lr2sRn87nJy20RupqSh1F2m3HHPSp8ShIPQJrJ3A==}
 
-  entities-for-enhancer@6.0.0:
-    resolution: {integrity: sha512-GHijJmaocPF97XQU9IGXy50jbgZOjXFE0dAhHUIywT4vuFI/7Lv+fAb60fFGzd1vGBZ6KR5zlAhBPz9KbYvU8A==}
-    engines: {node: '>=20'}
-
   env-paths@2.2.1:
     resolution: {integrity: sha512-+h1lkLKhZMTYjog1VEpJNG7NZJWcuc2DDk/qsqSTRRCOXiLjeQ1d1/udrUGhqMxUgAlwKNZ0cf2uqan5GLuS2A==}
     engines: {node: '>=6'}
@@ -2524,10 +2566,6 @@ packages:
   lines-and-columns@1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
 
-  linkify-it-for-enhancer@6.0.0:
-    resolution: {integrity: sha512-UtQCOrNcxikvCzNFYIYbjoMt/pIitc3DoP5ZZcfMRqOAFsfaspFiBaz/7BLaFTCBcQln2FvswEaEsHQQ38C5xw==}
-    engines: {node: '>=20'}
-
   lint-staged@16.2.0:
     resolution: {integrity: sha512-spdYSOCQ2MdZ9CM1/bu/kDmaYGsrpNOeu1InFFV8uhv14x6YIubGxbCpSmGILFoxkiheNQPDXSg5Sbb5ZuVnug==}
     engines: {node: '>=20.17'}
@@ -2615,41 +2653,11 @@ packages:
     resolution: {integrity: sha512-sI1NY4lWlXBAfjmCtVWIIpBypbBdhHtcjnwnv+gtCnsaOffyFil3aidszGC8hgzJe+fT1qix05sWxmD/Bmf/oQ==}
     engines: {node: ^20.17.0 || >=22.9.0}
 
-  markdown-it-anchor-for-enhancer@10.0.4:
-    resolution: {integrity: sha512-d4mHJjB1jwUUILAnC++nUo4uTxTxFjEZDdl/oSeicsD6Q7PJkrm7n+onRGTppeqLM7gZvISsRElQCh/QlZ0UAA==}
-    engines: {node: '>=20'}
-    peerDependencies:
-      markdown-it-enhancer: ~15.0.0 || ~15.1.0
-    peerDependenciesMeta:
-      markdown-it-enhancer:
-        optional: true
-
-  markdown-it-emoji-for-enhancer@4.0.2:
-    resolution: {integrity: sha512-h4c7i6qfPqUhIaEBv7L3Cq8GOSRkKog0mz2lKG7qiqXNouZjqwG9Y5afwJkzvbyDxAmALw4LBOnxunjMnDDe+g==}
-    engines: {node: '>=20'}
-    peerDependencies:
-      markdown-it-enhancer: ~15.0.0 || ~15.1.0
-    peerDependenciesMeta:
-      markdown-it-enhancer:
-        optional: true
-
-  markdown-it-enhancer-utils@1.1.0:
-    resolution: {integrity: sha512-4CeJri3melCrHSE9dWoMW/K8KkPgmsRboCcjLsLyo9nsfTYYmkNXQSsPVTxx4M2JVHKu45uZM9+pnyUFNpGXtQ==}
-    engines: {node: '>=20'}
-
-  markdown-it-enhancer@15.1.0:
-    resolution: {integrity: sha512-Ll9PGFPdR2i12EqgW8HSp8iG/gzYpTPGY/u4i90J6w+QipocmxfHJo60DdibCO5lKnlVTCGD8a/ipgKtfa+BRA==}
-    engines: {node: '>=20'}
-
   mdast-util-from-markdown@0.8.5:
     resolution: {integrity: sha512-2hkTXtYYnr+NubD/g6KGBS/0mFmBcifAsI0yIWRiRo0PjVs6SSOSOdtzbp6kSGnShDN6G5aWZpKQ2lWRy27mWQ==}
 
   mdast-util-to-string@2.0.0:
     resolution: {integrity: sha512-AW4DRS3QbBayY/jJmD8437V1Gombjf8RSOUCMFBuo5iHi58AGEgVCKQ+ezHkZZDpAQS75hcBMpLqjpJTjtUL7w==}
-
-  mdurl-for-enhancer@3.0.0:
-    resolution: {integrity: sha512-ulBfEL2Zad7xaZeRXKCrMq35ofQYP45mcxyp8Vg1quNMR0qOw9Knq8S2T8sPpTshV22/x1RKRAwK2slQnCW9dw==}
-    engines: {node: '>=20'}
 
   meow@12.1.1:
     resolution: {integrity: sha512-BhXM0Au22RwUneMPwSCnyhTOizdWoIEPU9sp0Aqa1PnDMR5Wv2FGXYDjuzJEIX+Eo2Rb8xuYe5jrnm5QowQFkw==}
@@ -3021,10 +3029,6 @@ packages:
 
   protocols@2.0.2:
     resolution: {integrity: sha512-hHVTzba3wboROl0/aWRRG9dMytgH6ow//STBZh43l/wQgmMhYhOFi0EHWAPtoCz9IAUymsyP0TSBHkhgMEGNnQ==}
-
-  punycode.js-for-enhancer@3.0.0:
-    resolution: {integrity: sha512-PkHuYh8egEhlTVvapDYf436TSkyhtbAKkUFVOYw7yoDuzNLwm3LByhtOeQoyMookQMntRxSqtcA6h7EpBTvm3Q==}
-    engines: {node: '>=20'}
 
   punycode@2.3.1:
     resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}
@@ -3408,10 +3412,6 @@ packages:
     resolution: {integrity: sha512-CWBzXQrc/qOkhidw1OzBTQuYRbfyxDXJMVJ1XNwUHGROVmuaeiEm3OslpZ1RV96d7SKKjZKrSJu3+t/xlw3R9A==}
     engines: {node: '>=14.17'}
     hasBin: true
-
-  uc.micro-for-enhancer@3.0.0:
-    resolution: {integrity: sha512-NQtVr1RDWPr+A2uQ+PfursoMytfhlzA7Ss24hvARH11PtQEwHBQX1zzMAnZkTvJt+2c8K8rVjpobZ7G6X3yBuw==}
-    engines: {node: '>=20'}
 
   uglify-js@3.19.3:
     resolution: {integrity: sha512-v3Xu+yuwBXisp6QYTcH4UbH+xYJXqnq2m/LtQVWKWzYc1iehYnLixoQDN9FH6/j9/oybfd6W9Ghwkl8+UMKTKQ==}
@@ -4295,6 +4295,46 @@ snapshots:
       - babel-plugin-macros
       - conventional-commits-filter
       - supports-color
+
+  '@markdown-it-enhancer/core@1.0.0':
+    dependencies:
+      '@markdown-it-enhancer/entities': 1.0.0
+      '@markdown-it-enhancer/linkify-it': 1.0.0
+      '@markdown-it-enhancer/mdurl': 1.0.0
+      '@markdown-it-enhancer/punycode.js': 1.0.0
+      '@markdown-it-enhancer/shared': 1.0.0
+      '@markdown-it-enhancer/uc.micro': 1.0.0
+
+  '@markdown-it-enhancer/entities@1.0.0': {}
+
+  '@markdown-it-enhancer/linkify-it@1.0.0':
+    dependencies:
+      '@markdown-it-enhancer/shared': 1.0.0
+      '@markdown-it-enhancer/uc.micro': 1.0.0
+
+  '@markdown-it-enhancer/mdurl@1.0.0': {}
+
+  '@markdown-it-enhancer/plugin-anchor@1.0.0(@markdown-it-enhancer/core@1.0.0)':
+    optionalDependencies:
+      '@markdown-it-enhancer/core': 1.0.0
+
+  '@markdown-it-enhancer/plugin-emoji@1.0.0(@markdown-it-enhancer/core@1.0.0)':
+    dependencies:
+      '@markdown-it-enhancer/shared': 1.0.0
+      '@markdown-it-enhancer/uc.micro': 1.0.0
+    optionalDependencies:
+      '@markdown-it-enhancer/core': 1.0.0
+
+  '@markdown-it-enhancer/punycode.js@1.0.0': {}
+
+  '@markdown-it-enhancer/shared@1.0.0':
+    dependencies:
+      '@markdown-it-enhancer/entities': 1.0.0
+      '@markdown-it-enhancer/mdurl': 1.0.0
+      '@markdown-it-enhancer/punycode.js': 1.0.0
+      '@markdown-it-enhancer/uc.micro': 1.0.0
+
+  '@markdown-it-enhancer/uc.micro@1.0.0': {}
 
   '@meteorlxy/eslint-config@6.6.2(eslint@9.36.0(jiti@2.6.0))(typescript@5.9.2)':
     dependencies:
@@ -5408,8 +5448,6 @@ snapshots:
       iconv-lite: 0.6.3
     optional: true
 
-  entities-for-enhancer@6.0.0: {}
-
   env-paths@2.2.1: {}
 
   environment@1.1.0: {}
@@ -6065,11 +6103,6 @@ snapshots:
 
   lines-and-columns@1.2.4: {}
 
-  linkify-it-for-enhancer@6.0.0:
-    dependencies:
-      markdown-it-enhancer-utils: 1.1.0
-      uc.micro-for-enhancer: 3.0.0
-
   lint-staged@16.2.0:
     dependencies:
       commander: 14.0.1
@@ -6185,24 +6218,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  markdown-it-anchor-for-enhancer@10.0.4(markdown-it-enhancer@15.1.0):
-    optionalDependencies:
-      markdown-it-enhancer: 15.1.0
-
-  markdown-it-emoji-for-enhancer@4.0.2(markdown-it-enhancer@15.1.0):
-    optionalDependencies:
-      markdown-it-enhancer: 15.1.0
-
-  markdown-it-enhancer-utils@1.1.0: {}
-
-  markdown-it-enhancer@15.1.0:
-    dependencies:
-      entities-for-enhancer: 6.0.0
-      linkify-it-for-enhancer: 6.0.0
-      mdurl-for-enhancer: 3.0.0
-      punycode.js-for-enhancer: 3.0.0
-      uc.micro-for-enhancer: 3.0.0
-
   mdast-util-from-markdown@0.8.5:
     dependencies:
       '@types/mdast': 3.0.15
@@ -6214,8 +6229,6 @@ snapshots:
       - supports-color
 
   mdast-util-to-string@2.0.0: {}
-
-  mdurl-for-enhancer@3.0.0: {}
 
   meow@12.1.1: {}
 
@@ -6608,8 +6621,6 @@ snapshots:
   proto-list@1.2.4: {}
 
   protocols@2.0.2: {}
-
-  punycode.js-for-enhancer@3.0.0: {}
 
   punycode@2.3.1: {}
 
@@ -7008,8 +7019,6 @@ snapshots:
   type-fest@4.41.0: {}
 
   typescript@5.9.2: {}
-
-  uc.micro-for-enhancer@3.0.0: {}
 
   uglify-js@3.19.3:
     optional: true

@@ -1,4 +1,7 @@
-import type { MarkdownItEnv, MarkdownItPlugin } from 'markdown-it-enhancer';
+import type {
+  MarkdownItEnv,
+  MarkdownItPlugin,
+} from '@markdown-it-enhancer/core';
 import {
   TAG_NAME_SCRIPT,
   TAG_NAME_STYLE,

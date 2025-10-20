@@ -1,4 +1,4 @@
-import type { StateBlockRuleFn } from 'markdown-it-enhancer';
+import type { StateBlockRuleFn } from '@markdown-it-enhancer/core';
 import {
   HTML_OPEN_AND_CLOSE_TAG_IN_THE_SAME_LINE_RE,
   HTML_OPEN_CLOSE_TAG_RE,

@@ -1,8 +1,11 @@
+import type {
+  MarkdownItEnv,
+  MarkdownItPlugin,
+} from '@markdown-it-enhancer/core';
 import {
   slugify as defaultSlugify,
   resolveHeadersFromTokens,
 } from '@mdit-vue-for-enhancer/shared';
-import type { MarkdownItEnv, MarkdownItPlugin } from 'markdown-it-enhancer';
 import type { HeadersPluginOptions } from './types.js';
 
 /**

@@ -1,6 +1,6 @@
-import { emoji } from 'markdown-it-emoji-for-enhancer/full';
-import type { MarkdownItEnv } from 'markdown-it-enhancer';
-import { MarkdownIt } from 'markdown-it-enhancer';
+import type { MarkdownItEnv } from '@markdown-it-enhancer/core';
+import { MarkdownIt } from '@markdown-it-enhancer/core';
+import { emoji } from '@markdown-it-enhancer/plugin-emoji/full';
 import { describe, expect, it } from 'vitest';
 import { titlePlugin } from '../src/index.js';
 

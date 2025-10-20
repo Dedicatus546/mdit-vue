@@ -75,7 +75,7 @@ export interface MarkdownSfcBlocks {
   customBlocks: SfcBlock[];
 }
 
-declare module 'markdown-it-enhancer' {
+declare module '@markdown-it-enhancer/core' {
   interface MarkdownItEnv {
     /**
      * SFC blocks that extracted by `@mdit-vue/plugin-sfc`

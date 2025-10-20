@@ -1,5 +1,5 @@
-import type { MarkdownItEnv } from 'markdown-it-enhancer';
-import { MarkdownIt } from 'markdown-it-enhancer';
+import type { MarkdownItEnv } from '@markdown-it-enhancer/core';
+import { MarkdownIt } from '@markdown-it-enhancer/core';
 import { expect, it } from 'vitest';
 import { sfcPlugin } from '../src/index.js';
 

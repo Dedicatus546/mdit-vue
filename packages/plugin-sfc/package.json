@@ -34,11 +34,11 @@
     "tsdown": "catalog:dev",
     "vitest": "catalog:dev"
   },
+  "peerDependencies": {
+    "@markdown-it-enhancer/core": "catalog:peer"
+  },
   "engines": {
     "node": ">=20.0.0"
-  },
-  "peerDependencies": {
-    "markdown-it-enhancer": "catalog:peer"
   },
   "publishConfig": {
     "access": "public"

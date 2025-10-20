@@ -1,5 +1,8 @@
+import type {
+  MarkdownItEnv,
+  MarkdownItPlugin,
+} from '@markdown-it-enhancer/core';
 import { resolveTitleFromToken } from '@mdit-vue-for-enhancer/shared';
-import type { MarkdownItEnv, MarkdownItPlugin } from 'markdown-it-enhancer';
 
 /**
  * Get markdown page title info

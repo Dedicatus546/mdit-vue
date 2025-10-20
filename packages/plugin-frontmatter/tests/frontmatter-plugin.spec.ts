@@ -1,5 +1,5 @@
-import type { MarkdownItEnv } from 'markdown-it-enhancer';
-import { MarkdownIt } from 'markdown-it-enhancer';
+import type { MarkdownItEnv } from '@markdown-it-enhancer/core';
+import { MarkdownIt } from '@markdown-it-enhancer/core';
 import { describe, expect, it } from 'vitest';
 import type { FrontmatterPluginOptions } from '../src/index.js';
 import { frontmatterPlugin } from '../src/index.js';

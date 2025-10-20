@@ -1,4 +1,4 @@
-import type { RendererFn } from 'markdown-it-enhancer';
+import type { RendererFn } from '@markdown-it-enhancer/core';
 
 /**
  * Options of @mdit-vue/plugin-toc
@@ -93,8 +93,8 @@ export interface TocPluginOptions {
   linkClass?: string;
 }
 
-declare module 'markdown-it-enhancer' {
+declare module '@markdown-it-enhancer/core' {
   export interface RendererExtendsRules {
-    toc_body: RendererFn<'sync'>;
+    toc_body: RendererFn;
   }
 }

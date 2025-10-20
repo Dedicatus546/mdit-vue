@@ -1,4 +1,4 @@
-import type { StateBlockRuleFn } from 'markdown-it-enhancer';
+import type { StateBlockRuleFn } from '@markdown-it-enhancer/core';
 import type { TocPluginOptions } from './types.js';
 
 /**

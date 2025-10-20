@@ -1,4 +1,4 @@
-import type { Token } from 'markdown-it-enhancer';
+import type { Token } from '@markdown-it-enhancer/core';
 import { htmlEscape } from './html-escape.js';
 
 interface TokenMeta {

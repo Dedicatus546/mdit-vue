@@ -1,8 +1,8 @@
+import type { MarkdownItEnv } from '@markdown-it-enhancer/core';
+import { MarkdownIt } from '@markdown-it-enhancer/core';
+import { anchor } from '@markdown-it-enhancer/plugin-anchor';
 import { slugify } from '@mdit-vue-for-enhancer/shared';
 import type { MarkdownItHeader } from '@mdit-vue-for-enhancer/types';
-import { anchor } from 'markdown-it-anchor-for-enhancer';
-import type { MarkdownItEnv } from 'markdown-it-enhancer';
-import { MarkdownIt } from 'markdown-it-enhancer';
 import { describe, expect, it } from 'vitest';
 import { headersPlugin } from '../src/index.js';
 

@@ -1,5 +1,5 @@
+import type { MarkdownItPlugin } from '@markdown-it-enhancer/core';
 import grayMatter from 'gray-matter';
-import type { MarkdownItPlugin } from 'markdown-it-enhancer';
 import type { FrontmatterPluginOptions } from './types.js';
 
 /**
